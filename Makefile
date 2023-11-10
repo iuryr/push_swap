@@ -23,3 +23,15 @@ $(NAME): $(LIBFT) $(OBJ)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+clean:
+	rm -f src/*.o
+	$(MAKE) -C $(LIBFT_DIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean $(NAME)
+
+.PHONY: fclean clean all re
