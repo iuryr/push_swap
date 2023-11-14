@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/14 17:41:15 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:27:06 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,28 @@ void	append_node(t_inode **head, t_inode *new_node)
 	while(last->next != *head)
 		last = last->next;
 	last->next = new_node;
+	new_node->prev = last;
 	new_node->next = *head;
+}
+
+//check if a number is already contained in a linked-list
+int	is_dup(int number, t_inode **head)
+{
+	t_inode	*current;
+
+	if (*head == NULL)
+		return (0);
+	current = *head;
+	while (current->next != *head)
+	{
+		if (current->number == number)
+			return (1);
+		current = current->next;
+	}
+	if (current->number == number)
+		return (1);
+	else
+		return (0);
 }
 
 int main(int argc, char *argv[])
@@ -80,9 +101,10 @@ int main(int argc, char *argv[])
 	if (argc == 1)
 		exit(1);
 	head = ft_calloc(1, sizeof(t_inode *));
+	//so adiciona à lista se for proper_int - refatorar depois.
 	while(i < argc)
 	{
-		if (is_int(argv[i]) && is_in_range(ft_atoll(argv[i])))
+		if (is_int(argv[i]) && is_in_range(ft_atoll(argv[i])) && !is_dup(ft_atoi(argv[i]), head))
 			append_node(head, create_node(ft_atoi(argv[i])));
 		i++;
 	}
