@@ -24,6 +24,10 @@ $(NAME): $(LIBFT) $(OBJ)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
+debug: $(LIBFT) $(OBJ)
+	$(CC) $(FLAGS) -gdwarf-4 $(SRC) -o $(NAME) $(LIBS)
+
+
 clean:
 	rm -f src/*.o
 	$(MAKE) -C $(LIBFT_DIR) clean
