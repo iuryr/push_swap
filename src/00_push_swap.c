@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/14 18:27:06 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:00:16 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	append_node(t_inode **head, t_inode *new_node)
 	last->next = new_node;
 	new_node->prev = last;
 	new_node->next = *head;
+	(*head)->prev = new_node;
 }
 
 //check if a number is already contained in a linked-list
@@ -92,6 +93,19 @@ int	is_dup(int number, t_inode **head)
 		return (0);
 }
 
+void	destroy_list(t_inode **head)
+{
+	t_inode	*og_head;
+
+	og_head = *head;
+	while ((*head)->next != og_head)
+	{
+		*head = (*head)->next;
+		free((*head)->prev);
+	}
+	free(*head);
+}
+
 int main(int argc, char *argv[])
 {
 	int	i = 1;
@@ -106,6 +120,13 @@ int main(int argc, char *argv[])
 	{
 		if (is_int(argv[i]) && is_in_range(ft_atoll(argv[i])) && !is_dup(ft_atoi(argv[i]), head))
 			append_node(head, create_node(ft_atoi(argv[i])));
+		else
+		{
+			ft_putstr_fd("Error\n", 2);
+			destroy_list(head);
+			free(head);
+			exit(1);
+		}
 		i++;
 	}
 	head_og = ft_calloc(1, sizeof(t_inode *));
