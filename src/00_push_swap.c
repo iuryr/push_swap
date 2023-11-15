@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/14 19:00:16 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:05:33 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void	destroy_list(t_inode **head)
 {
 	t_inode	*og_head;
 
+	if (*head == NULL)
+		return ;
 	og_head = *head;
 	while ((*head)->next != og_head)
 	{
