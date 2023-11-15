@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/14 19:01:34 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:55:52 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_inode
 int		is_int(char *str);
 int		is_in_range(long long nbr);
 int		is_dup(int number, t_inode **head);
+t_inode	**process_input(int argc, char *argv[], t_inode **head);
 
 //list manipulation
 t_inode	*create_node(int number);

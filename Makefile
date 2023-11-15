@@ -4,7 +4,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -c
 FLAGS = -Wall -Wextra -Werror
 
-SRC = ./src/00_push_swap.c
+SRC = ./src/00_push_swap.c \
+	  ./src/01_input_processing.c \
+	  ./src/02_llist_manipulation.c
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
@@ -25,7 +27,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 debug: $(LIBFT) $(OBJ)
-	$(CC) $(FLAGS) -gdwarf-4 $(SRC) -o $(NAME) $(LIBS)
+	$(CC) $(FLAGS) -gdwarf-4 $(SRC) $(LIBFT_DIR)/*.c -o $(NAME) $(LIBS)
 
 
 clean:
