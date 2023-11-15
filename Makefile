@@ -6,7 +6,8 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC = ./src/00_push_swap.c \
 	  ./src/01_input_processing.c \
-	  ./src/02_llist_manipulation.c
+	  ./src/02_llist_manipulation.c \
+	  ./src/03_motions.c
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a
