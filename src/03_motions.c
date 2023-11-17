@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:09:29 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/15 18:28:45 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:30:31 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 
 void	swap(t_inode **head)
 {
-	t_inode	*first;
+	t_inode *first;
 	t_inode	*second;
+	t_inode	*last;
 
+	if (*head == NULL || (*head)->next == *head)
+		return ;
 	first = *head;
 	second = first->next;
-	second->prev = first->prev;
-	second->next = first->next;
+	last = *head;
+	while (last->next != *head)
+		last = last->next;
+	if (last->next->next == last)
+	{
+		first->next = second;
+		second->next = first;
+		*head = second;
+		return ;
+	}
+	first->next = second->next;
+	second->next = first;
 	*head = second;
+	last->next = *head;
 }

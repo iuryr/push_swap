@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 15:03:47 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:02:55 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	is_ordered(t_inode **head)
 	t_inode	*og_head;
 
 	og_head = *head;
-	while ((*head)->next != og_head)
+	while (og_head->next != *head)
 	{
-		if ((*head)->next->number < (*head)->number)
+		if (og_head->next->number < og_head->number)
 			return (0);
-		*head = (*head)->next;
+		og_head = og_head->next;
 	}
 	return (1);
 }
@@ -43,22 +43,22 @@ int	main(int argc, char *argv[])
 	}
 	og_head = ft_calloc(1, sizeof(t_inode *));
 	*og_head = *stack_a;
-	while ((*stack_a)->next != *og_head)
+	while ((*og_head)->next != *stack_a)
 	{
-		ft_printf("number: %d\n", (*stack_a)->number);
-		*stack_a = (*stack_a)->next;
+		ft_printf("number: %d\n", (*og_head)->number);
+		*og_head = (*og_head)->next;
 	}
-	ft_printf("number: %d\n", (*stack_a)->number);
+	ft_printf("number: %d\n", (*og_head)->number);
 	ft_printf("\n");
-	// *stack_a = *og_head;
-	// swap(stack_a);
-	// *og_head = *stack_a;
-	// while ((*stack_a)->next != *og_head)
-	// {
-	// 	ft_printf("number: %d\n", (*stack_a)->number);
-	// 	*stack_a = (*stack_a)->next;
-	// }
-	// ft_printf("number: %d\n", (*stack_a)->number);
+	swap(stack_a);
+	*og_head = *stack_a;
+	while ((*og_head)->next != *stack_a)
+	{
+		ft_printf("number: %d\n", (*og_head)->number);
+		*og_head = (*og_head)->next;
+	}
+	ft_printf("number: %d\n", (*og_head)->number);
+	ft_printf("\n");
 	destroy_list(stack_a);
 	free(stack_a);
 	free(og_head);
