@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/15 17:53:08 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:57:47 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_inode
 {
 	int				number;
 	struct s_inode	*next;
-	struct s_inode	*prev;
 }	t_inode;
 
 //input validation

@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/15 17:56:21 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:03:47 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ int	main(int argc, char *argv[])
 	}
 	ft_printf("number: %d\n", (*stack_a)->number);
 	ft_printf("\n");
-	*stack_a = *og_head;
-	swap(stack_a);
-	*og_head = *stack_a;
-	while ((*stack_a)->next != *og_head)
-	{
-		ft_printf("number: %d\n", (*stack_a)->number);
-		*stack_a = (*stack_a)->next;
-	}
-	ft_printf("number: %d\n", (*stack_a)->number);
+	// *stack_a = *og_head;
+	// swap(stack_a);
+	// *og_head = *stack_a;
+	// while ((*stack_a)->next != *og_head)
+	// {
+	// 	ft_printf("number: %d\n", (*stack_a)->number);
+	// 	*stack_a = (*stack_a)->next;
+	// }
+	// ft_printf("number: %d\n", (*stack_a)->number);
 	destroy_list(stack_a);
 	free(stack_a);
 	free(og_head);
