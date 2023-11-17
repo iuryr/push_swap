@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 18:21:09 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:50:05 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_inode	**process_input(int argc, char *argv[], t_inode **head);
 //list manipulation
 t_inode	*create_node(int number);
 void	append_node(t_inode **head, t_inode *new_node);
+void	prepend_node(t_inode **head, t_inode *new_node);
 void	destroy_list(t_inode **head);
 
 //stack motions

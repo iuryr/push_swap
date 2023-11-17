@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:09:29 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 18:26:23 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 19:06:29 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,7 @@ void	rrot(t_inode **head)
 		og_head = og_head->next;
 	*head = og_head;
 }
+
+// void	push(t_inode **from, t_inode **to)
+// {
+// }

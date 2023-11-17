@@ -30,6 +30,8 @@ $(LIBFT):
 debug: $(LIBFT) $(OBJ)
 	$(CC) $(FLAGS) -gdwarf-4 $(SRC) $(LIBFT_DIR)/*.c -o $(NAME) $(LIBS)
 
+test_prepend: $(LIBFT) $(OBJ)
+	$(CC) $(FLAGS) -gdwarf-4 $(SRC) $(LIBFT_DIR)/*.c tests/prepend_node.c -o test_prepend.out $(LIBS)
 
 clean:
 	rm -f src/*.o

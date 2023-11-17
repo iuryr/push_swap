@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:48:38 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 18:14:32 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 19:45:51 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,31 @@ void	append_node(t_inode **head, t_inode *new_node)
 		last = last->next;
 	last->next = new_node;
 	new_node->next = *head;
+}
+
+void	prepend_node(t_inode **head, t_inode *new_node)
+{
+	t_inode	*old_first;
+	t_inode	*last;
+
+	if (*head == NULL)
+	{
+		*head = new_node;
+		(*head)->next = new_node;
+		return ;
+	}
+	old_first = *head;
+	new_node->next = old_first;
+	*head = new_node;
+	last = *head;
+	if ((*head)->next->next == old_first)
+	{
+		old_first->next = *head;
+		return ;
+	}
+	while (last->next != old_first)
+		last = last->next;
+	last->next = *head;
 }
 
 void	destroy_list(t_inode **head)
