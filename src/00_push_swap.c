@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 16:02:55 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:28:34 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	main(int argc, char *argv[])
 	}
 	ft_printf("number: %d\n", (*og_head)->number);
 	ft_printf("\n");
-	swap(stack_a);
+	// swap(stack_a);
+	// rot(stack_a);
+	// rrot(stack_a);
 	*og_head = *stack_a;
 	while ((*og_head)->next != *stack_a)
 	{

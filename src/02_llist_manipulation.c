@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:48:38 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 15:02:00 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:14:32 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	append_node(t_inode **head, t_inode *new_node)
 void	destroy_list(t_inode **head)
 {
 	t_inode	*og_head;
-	t_inode *temp;
+	t_inode	*temp;
 
 	if (*head == NULL)
 		return ;

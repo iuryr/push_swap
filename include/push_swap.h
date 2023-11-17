@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 14:57:47 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:21:09 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	destroy_list(t_inode **head);
 
 //stack motions
 void	swap(t_inode **head);
+void	rot(t_inode **head);
+void	rrot(t_inode **head);
 #endif //PUSH_SWAP_H
