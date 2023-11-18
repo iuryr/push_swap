@@ -33,9 +33,11 @@ t_inode	*create_node(int number);
 void	append_node(t_inode **head, t_inode *new_node);
 void	prepend_node(t_inode **head, t_inode *new_node);
 void	destroy_list(t_inode **head);
+void	print_list(t_inode **head);
 
 //stack motions
 void	swap(t_inode **head);
 void	rot(t_inode **head);
 void	rrot(t_inode **head);
+void	push(t_inode **from, t_inode **to);
 #endif //PUSH_SWAP_H

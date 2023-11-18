@@ -55,6 +55,24 @@ void	rrot(t_inode **head)
 	*head = og_head;
 }
 
-// void	push(t_inode **from, t_inode **to)
-// {
-// }
+void	push(t_inode **from, t_inode **to)
+{
+	t_inode	*last;
+	t_inode	*old_first;
+
+	if (*from == NULL)
+		return ;
+	old_first = *from;
+	last = *from;
+	if (old_first->next == old_first)
+	{
+		prepend_node(to, old_first);
+		*from = NULL;
+		return;
+	}
+	while (last->next != *from)
+		last = last->next;
+	last->next = (*from)->next;
+	*from = (*from)->next;
+	prepend_node(to, old_first);
+}

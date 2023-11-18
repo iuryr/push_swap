@@ -26,49 +26,48 @@ int	is_ordered(t_inode **head)
 	return (1);
 }
 
-// int	main(int argc, char *argv[])
-// {
-// 	t_inode	**stack_a;
-// 	t_inode	**stack_b;
-// 	t_inode	**og_head;
-//
-// 	if (argc == 1)
-// 		exit(1);
-// 	stack_a = ft_calloc(1, sizeof(t_inode *));
-// 	stack_b = ft_calloc(1, sizeof(t_inode *));
-// 	process_input(argc, argv, stack_a);
-// 	ft_printf("Is ordered? %d\n", is_ordered(stack_a));
-// 	if (is_ordered(stack_a))
-// 	{
-// 		destroy_list(stack_a);
-// 		exit(0);
-// 	}
-// 	og_head = ft_calloc(1, sizeof(t_inode *));
-// 	*og_head = *stack_a;
-// 	ft_printf("Stack a:\n");
-// 	while ((*og_head)->next != *stack_a)
-// 	{
-// 		ft_printf("number: %d\n", (*og_head)->number);
-// 		*og_head = (*og_head)->next;
-// 	}
-// 	ft_printf("number: %d\n", (*og_head)->number);
-// 	ft_printf("\n");
-// 	// swap(stack_a);
-// 	// rot(stack_a);
-// 	// rrot(stack_a);
-// 	push(stack_a, stack_b);
-// 	*og_head = *stack_a;
-// 	ft_printf("Stack a:\n");
-// 	while ((*og_head)->next != *stack_a)
-// 	{
-// 		ft_printf("number: %d\n", (*og_head)->number);
-// 		*og_head = (*og_head)->next;
-// 	}
-// 	ft_printf("number: %d\n", (*og_head)->number);
-// 	ft_printf("\n");
-// 	ft_printf("Stack b:\n");
-// 	ft_printf("number: %d\n", (*stack_b)->number);
-// 	destroy_list(stack_a);
-// 	free(stack_a);
-// 	free(og_head);
-// }
+int	main(int argc, char *argv[])
+{
+	t_inode	**stack_a;
+	t_inode	**stack_b;
+	t_inode	**og_head;
+
+	if (argc == 1)
+		exit(1);
+	stack_a = ft_calloc(1, sizeof(t_inode *));
+	stack_b = ft_calloc(1, sizeof(t_inode *));
+	process_input(argc, argv, stack_a);
+	ft_printf("Is ordered? %d\n", is_ordered(stack_a));
+	// if (is_ordered(stack_a))
+	// {
+	// 	destroy_list(stack_a);
+	// 	exit(0);
+	// }
+	og_head = ft_calloc(1, sizeof(t_inode *));
+	*og_head = *stack_a;
+	ft_printf("Stack a:\n");
+	print_list(stack_a);
+	ft_printf("\n");
+	// swap(stack_a);
+	// rot(stack_a);
+	// rrot(stack_a);
+	push(stack_a, stack_b);
+	*og_head = *stack_a;
+	ft_printf("Stack a:\n");
+	print_list(stack_a);
+	ft_printf("Stack b:\n");
+	print_list(stack_b);
+	push(stack_a, stack_b);
+	ft_printf("Stack a:\n");
+	print_list(stack_a);
+	ft_printf("Stack b:\n");
+	print_list(stack_b);
+	push(stack_a, stack_b);
+	ft_printf("Stack a:\n");
+	print_list(stack_a);
+	ft_printf("Stack b:\n");
+	print_list(stack_b);
+	destroy_list(stack_a);
+	free(stack_a);
+	free(og_head);
+}

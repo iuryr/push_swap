@@ -84,3 +84,24 @@ void	destroy_list(t_inode **head)
 	}
 	free(*head);
 }
+
+void	print_list(t_inode **head)
+{
+	t_inode *og_head;
+	unsigned int i;
+
+	if (*head == NULL)
+	{
+		ft_printf("Empty linked-list\n");
+		return ;
+	}
+	i = 1;
+	og_head = *head;
+	while (og_head->next != *head)
+	{
+		ft_printf("element %d: %d\n", i, og_head->number);
+		og_head = og_head->next;
+		i++;
+	}
+	ft_printf("element %d: %d\n\n", i, og_head->number);
+}
