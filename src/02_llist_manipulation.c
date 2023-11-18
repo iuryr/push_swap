@@ -57,14 +57,14 @@ void	prepend_node(t_inode **head, t_inode *new_node)
 	old_first = *head;
 	new_node->next = old_first;
 	*head = new_node;
-	last = *head;
-	if ((*head)->next->next == old_first)
-	{
-		old_first->next = *head;
-		return ;
-	}
+	last = old_first;
 	while (last->next != old_first)
 		last = last->next;
+	if (old_first->next == old_first)
+	{
+		(*head)->next->next = *head;
+		return ;
+	}
 	last->next = *head;
 }
 
