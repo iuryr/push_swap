@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 12:59:34 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:18:17 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ void	rrot(t_inode **head);
 void	push(t_inode **from, t_inode **to);
 
 //sorting
+int		is_ordered(t_inode **head);
 void	sort(t_stack *stack_a, t_stack *stack_b);
+void	sort_two(t_stack *stack_a);
+void	sort_three(t_stack *stack_a);
 #endif //PUSH_SWAP_H
