@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 12:17:45 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:55:50 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char *argv[])
 		destroy_list(stack_a.head);
 		exit(0);
 	}
+	sort(&stack_a, &stack_b);
 	og_head = ft_calloc(1, sizeof(t_inode *));
 	destroy_list(stack_a.head);
 	free(stack_a.head);
