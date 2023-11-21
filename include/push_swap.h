@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 18:50:05 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:32:06 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,21 @@ typedef struct s_inode
 	struct s_inode	*next;
 }	t_inode;
 
-//input validation
+typedef struct s_stack
+{
+	t_inode		**head;
+	int			min;
+	int			max;
+	size_t		size;
+}	t_stack;
+
+//input processing
 int		is_int(char *str);
 int		is_in_range(long long nbr);
 int		is_dup(int number, t_inode **head);
-t_inode	**process_input(int argc, char *argv[], t_inode **head);
+void	set_minmax(t_stack *stack);
+void	update_minmax(t_stack *stack);
+void	process_input(int argc, char *argv[], t_stack *stack);
 
 //list manipulation
 t_inode	*create_node(int number);

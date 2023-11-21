@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:45:20 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/15 14:51:58 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:40:40 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	is_dup(int number, t_inode **head)
 		return (0);
 }
 
-t_inode	**process_input(int argc, char *argv[], t_inode **head)
+void	process_input(int argc, char *argv[], t_stack *stack)
 {
 	int	i;
 
@@ -66,16 +66,45 @@ t_inode	**process_input(int argc, char *argv[], t_inode **head)
 	while (i < argc)
 	{
 		if (is_int(argv[i]) && is_in_range(ft_atoll(argv[i]))
-			&& !is_dup(ft_atoi(argv[i]), head))
-			append_node(head, create_node(ft_atoi(argv[i])));
+			&& !is_dup(ft_atoi(argv[i]), stack->head))
+			append_node(stack->head, create_node(ft_atoi(argv[i])));
 		else
 		{
 			ft_putstr_fd("Error\n", 2);
-			destroy_list(head);
-			free(head);
+			destroy_list(stack->head);
+			free(stack->head);
 			exit(1);
 		}
 		i++;
 	}
-	return (head);
+	stack->size = argc - 1;
+	set_minmax(stack);
+	update_minmax(stack);
+}
+
+void	set_minmax(t_stack *stack)
+{
+	stack->min = (*stack->head)->number;
+	stack->max = (*stack->head)->number;
+}
+
+void	update_minmax(t_stack *stack)
+{
+	t_inode	*last;
+
+	if (stack->size == 1)
+		return;
+	last = *stack->head;
+	while (last->next != *stack->head)
+	{
+		if (last->number < stack->min)
+			stack->min = last->number;
+		if (last->number > stack->max)
+			stack->max = last->number;
+		last = last->next;
+	}
+	if (last->number < stack->min)
+		stack->min = last->number;
+	if (last->number > stack->max)
+		stack->max = last->number;
 }

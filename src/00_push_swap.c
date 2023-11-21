@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 11:55:41 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:17:45 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,49 +28,23 @@ int	is_ordered(t_inode **head)
 
 int	main(int argc, char *argv[])
 {
-	t_inode	**stack_a;
-	t_inode	**stack_b;
+	t_stack	stack_a;
+	t_stack	stack_b;
 	t_inode	**og_head;
 
 	if (argc == 1)
 		exit(1);
-	stack_a = ft_calloc(1, sizeof(t_inode *));
-	stack_b = ft_calloc(1, sizeof(t_inode *));
-	process_input(argc, argv, stack_a);
-	ft_printf("Is ordered? %d\n", is_ordered(stack_a));
-	if (is_ordered(stack_a))
+	stack_a.head = ft_calloc(1, sizeof(t_inode *));
+	stack_b.head = ft_calloc(1, sizeof(t_inode *));
+	process_input(argc, argv, &stack_a);
+	ft_printf("Is ordered? %d\n", is_ordered(stack_a.head));
+	if (is_ordered(stack_a.head))
 	{
-		destroy_list(stack_a);
+		destroy_list(stack_a.head);
 		exit(0);
 	}
 	og_head = ft_calloc(1, sizeof(t_inode *));
-	*og_head = *stack_a;
-	ft_printf("Stack a:\n");
-	print_list(stack_a);
-	ft_printf("\n");
-	// swap(stack_a);
-	// rot(stack_a);
-	// rrot(stack_a);
-	ft_printf("pa\n");
-	push(stack_a, stack_b);
-	*og_head = *stack_a;
-	ft_printf("Stack a:\n");
-	print_list(stack_a);
-	ft_printf("Stack b:\n");
-	print_list(stack_b);
-	ft_printf("pa\n");
-	push(stack_a, stack_b);
-	ft_printf("Stack a:\n");
-	print_list(stack_a);
-	ft_printf("Stack b:\n");
-	print_list(stack_b);
-	ft_printf("pa\n");
-	push(stack_a, stack_b);
-	ft_printf("Stack a:\n");
-	print_list(stack_a);
-	ft_printf("Stack b:\n");
-	print_list(stack_b);
-	destroy_list(stack_a);
-	free(stack_a);
+	destroy_list(stack_a.head);
+	free(stack_a.head);
 	free(og_head);
 }
