@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_input_processing.c                              :+:      :+:    :+:   */
+/*   01_input_processing_00.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:45:20 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 12:40:40 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:48:53 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,4 @@ void	set_minmax(t_stack *stack)
 {
 	stack->min = (*stack->head)->number;
 	stack->max = (*stack->head)->number;
-}
-
-void	update_minmax(t_stack *stack)
-{
-	t_inode	*last;
-
-	if (stack->size == 1)
-		return;
-	last = *stack->head;
-	while (last->next != *stack->head)
-	{
-		if (last->number < stack->min)
-			stack->min = last->number;
-		if (last->number > stack->max)
-			stack->max = last->number;
-		last = last->next;
-	}
-	if (last->number < stack->min)
-		stack->min = last->number;
-	if (last->number > stack->max)
-		stack->max = last->number;
 }

@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -Werror -c
 FLAGS = -Wall -Wextra -Werror
 
 SRC = ./src/00_push_swap.c \
-	  ./src/01_input_processing.c \
+	  ./src/01_input_processing_00.c \
+	  ./src/01_input_processing_01.c \
 	  ./src/02_llist_manipulation.c \
 	  ./src/03_motions.c
 
