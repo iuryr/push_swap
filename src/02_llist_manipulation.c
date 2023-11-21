@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:48:38 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 19:45:51 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:12:13 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	destroy_list(t_inode **head)
 
 void	print_list(t_inode **head)
 {
-	t_inode *og_head;
-	unsigned int i;
+	t_inode			*og_head;
+	unsigned int	i;
 
 	if (*head == NULL)
 	{

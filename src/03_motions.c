@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 17:09:29 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/17 19:06:29 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:11:30 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	push(t_inode **from, t_inode **to)
 	{
 		prepend_node(to, old_first);
 		*from = NULL;
-		return;
+		return ;
 	}
 	while (last->next != *from)
 		last = last->next;
