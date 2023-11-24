@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:56:35 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 16:37:30 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:03:06 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,18 @@ void	sort_three(t_stack *stack)
 		rrot(stack->head);
 		ft_printf("sa\nrra\n");
 	}
+}
+
+//return the index of a number in a linked-list
+unsigned int	get_index(t_inode **head, int nbr)
+{
+	unsigned int	index;
+	index = 0;
+	while ((*head)->number != nbr)
+	{
+		index++;
+		(*head) = (*head)->next;
+	}
+	(*head)->index = 0; //n sei pq
+	return (index);
 }
