@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 14:18:17 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:32:04 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_inode
 {
 	int				number;
+	unsigned int	index;
 	struct s_inode	*next;
 }	t_inode;
 
