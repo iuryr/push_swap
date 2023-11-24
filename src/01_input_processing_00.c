@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:45:20 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 12:48:53 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:49:30 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ void	process_input(int argc, char *argv[], t_stack *stack)
 		i++;
 	}
 	stack->size = argc - 1;
-	set_minmax(stack);
-	update_minmax(stack);
+	set_metadata(stack);
+	update_meta(stack);
 }
 
-void	set_minmax(t_stack *stack)
+void	set_metadata(t_stack *stack)
 {
 	stack->min = (*stack->head)->number;
 	stack->max = (*stack->head)->number;
+	stack->size = 0;
 }

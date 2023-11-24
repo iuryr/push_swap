@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/24 14:32:04 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:42:23 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ typedef struct s_stack
 int		is_int(char *str);
 int		is_in_range(long long nbr);
 int		is_dup(int number, t_inode **head);
-void	set_minmax(t_stack *stack);
-void	update_minmax(t_stack *stack);
+void	set_metadata(t_stack *stack);
+void	update_meta(t_stack *stack);
 void	process_input(int argc, char *argv[], t_stack *stack);
 
 //list manipulation
+unsigned int	lstsize(t_inode **head);
 t_inode	*create_node(int number);
 void	append_node(t_inode **head, t_inode *new_node);
 void	prepend_node(t_inode **head, t_inode *new_node);
