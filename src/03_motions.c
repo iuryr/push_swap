@@ -45,6 +45,16 @@ void	rot(t_inode **head, int flag)
 	*head = (*head)->next;
 	if (flag == 0)
 		ft_printf("ra\n");
+	if (flag == 2)
+		ft_printf("rb\n");
+}
+
+void	rr(t_stack *stack_a, t_stack *stack_b)
+{
+	rot(stack_a->head, 2);
+	rot(stack_b->head, 2);
+	ft_printf("rr\n");
+
 }
 
 void	rrot(t_inode **head, int flag)
