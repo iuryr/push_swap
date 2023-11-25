@@ -62,4 +62,8 @@ int	get_insert_index(t_stack *stack, int nbr);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
+int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	rarrb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	rrarb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 #endif //PUSH_SWAP_H

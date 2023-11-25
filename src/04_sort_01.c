@@ -45,3 +45,27 @@ int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr)
 		i = stack_a->size - get_index(stack_a->head, nbr);
 	return (i);
 }
+
+//numero total de operacoes
+int	rarrb_number(t_stack *stack_a, t_stack *stack_b, int nbr)
+{
+	unsigned int i;
+
+	i = 0;
+	if (get_insert_index(stack_b, nbr))
+		i = stack_b->size - get_insert_index(stack_b, nbr);
+	i = i + get_index(stack_a->head, nbr);
+	return (i);
+}
+
+//numero total de operacoes
+int	rrarb_number(t_stack *stack_a, t_stack *stack_b, int nbr)
+{
+	unsigned int i;
+
+	i = 0;
+	if (get_index(stack_a->head, nbr))
+		i = stack_a->size - get_index(stack_a->head, nbr);
+	i = i + get_insert_index(stack_b, nbr);
+	return (i);
+}
