@@ -22,12 +22,26 @@ int	get_insert_index(t_stack *stack, int nbr)
 	return (i);
 }
 
-int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int c)
+//pega o menor numero de rotacoes
+int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int nbr)
 {
 	unsigned int i;
 
-	i = get_insert_index(stack_b, c);
-	if (i < get_index(stack_a->head, c))
-		i = get_index(stack_a->head, c);
+	i = get_insert_index(stack_b, nbr);
+	if (i < get_index(stack_a->head, nbr))
+		i = get_index(stack_a->head, nbr);
+	return (i);
+}
+
+//pega o menor numero de rotacoes reversas
+int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr)
+{
+	unsigned int i;
+
+	i = 0;
+	if (get_insert_index(stack_b, nbr) != 0)
+		i = stack_b->size - get_insert_index(stack_b, nbr);
+	if ((i < stack_a->size - get_index(stack_a->head, nbr)) && get_index(stack_a->head, nbr))
+		i = stack_a->size - get_index(stack_a->head, nbr);
 	return (i);
 }
