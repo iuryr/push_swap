@@ -58,6 +58,7 @@ void	push(t_inode **from, t_inode **to);
 //sorting
 int		is_ordered(t_inode **head);
 unsigned int	get_index(t_inode **head, int nbr);
+int	get_insert_index(t_stack *stack, int nbr);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
