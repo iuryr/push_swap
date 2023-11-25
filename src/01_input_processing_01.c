@@ -17,7 +17,12 @@ void	update_meta(t_stack *stack)
 	t_inode	*last;
 
 	if (stack->size == 1)
+	{
+		stack->min = (*stack->head)->number;
+		stack->max = (*stack->head)->number;
+		stack->tail = stack->head;
 		return ;
+	}
 	last = *stack->head;
 	while (last->next != *stack->head)
 	{
@@ -32,6 +37,19 @@ void	update_meta(t_stack *stack)
 	if (last->number > stack->max)
 		stack->max = last->number;
 	stack->size = lstsize(stack->head);
+	stack->tail = get_tail(stack->head);
+}
+
+t_inode	**get_tail(t_inode **head)
+{
+	t_inode	*last;
+	t_inode **tail;
+
+	last = *head;
+	while (last->next != *head)
+		last = last->next;
+	tail = &last;
+	return (tail);
 }
 
 unsigned int	lstsize(t_inode **head)

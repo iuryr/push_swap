@@ -26,6 +26,7 @@ typedef struct s_inode
 typedef struct s_stack
 {
 	t_inode		**head;
+	t_inode		**tail;
 	int			min;
 	int			max;
 	size_t		size;
@@ -41,6 +42,7 @@ void	process_input(int argc, char *argv[], t_stack *stack);
 
 //list manipulation
 unsigned int	lstsize(t_inode **head);
+t_inode	**get_tail(t_inode **head);
 t_inode	*create_node(int number);
 void	append_node(t_inode **head, t_inode *new_node);
 void	prepend_node(t_inode **head, t_inode *new_node);

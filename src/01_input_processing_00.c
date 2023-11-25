@@ -86,5 +86,6 @@ void	set_metadata(t_stack *stack)
 {
 	stack->min = (*stack->head)->number;
 	stack->max = (*stack->head)->number;
+	stack->tail = NULL;
 	stack->size = 0;
 }
