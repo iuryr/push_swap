@@ -59,6 +59,7 @@ void	push(t_inode **from, t_inode **to);
 int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
+int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 
 //sorting
 int		is_ordered(t_inode **head);
@@ -71,4 +72,5 @@ int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rarrb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rrarb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	min_cost_ab(t_stack *stack_a, t_stack *stack_b);
 #endif //PUSH_SWAP_H

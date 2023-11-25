@@ -199,5 +199,33 @@ int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 		ft_printf("pa\n");
 	}
 	return (-1);
+}
 
+int	min_cost_ab(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	t_inode *tmp;
+
+	i = sim_revrot_number(stack_a, stack_b, (*stack_a->head)->number);
+	tmp = *stack_a->head;
+	while (tmp->next != *stack_a->head)
+	{
+		if (i > sim_rot_number(stack_a, stack_b, tmp->number))
+			i = sim_rot_number(stack_a, stack_b, tmp->number);
+		if (i > sim_revrot_number(stack_a, stack_b, tmp->number))
+			i = sim_revrot_number(stack_a, stack_b, tmp->number);
+		if (i > rarrb_number(stack_a, stack_b, tmp->number))
+			i = rarrb_number(stack_a, stack_b, tmp->number);
+		if (i > rrarb_number(stack_a, stack_b, tmp->number))
+			i = rrarb_number(stack_a, stack_b, tmp->number);
+	}
+	if (i > sim_rot_number(stack_a, stack_b, tmp->number))
+		i = sim_rot_number(stack_a, stack_b, tmp->number);
+	if (i > sim_revrot_number(stack_a, stack_b, tmp->number))
+		i = sim_revrot_number(stack_a, stack_b, tmp->number);
+	if (i > rarrb_number(stack_a, stack_b, tmp->number))
+		i = rarrb_number(stack_a, stack_b, tmp->number);
+	if (i > rrarb_number(stack_a, stack_b, tmp->number))
+		i = rrarb_number(stack_a, stack_b, tmp->number);
+	return (i);
 }
