@@ -56,6 +56,9 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rrot(t_inode **head, int flag);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	push(t_inode **from, t_inode **to);
+int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
+int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
+int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 
 //sorting
 int		is_ordered(t_inode **head);
