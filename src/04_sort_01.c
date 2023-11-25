@@ -21,3 +21,13 @@ int	get_insert_index(t_stack *stack, int nbr)
 	}
 	return (i);
 }
+
+int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int c)
+{
+	unsigned int i;
+
+	i = get_insert_index(stack_b, c);
+	if (i < get_index(stack_a->head, c))
+		i = get_index(stack_a->head, c);
+	return (i);
+}
