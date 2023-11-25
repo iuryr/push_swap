@@ -12,7 +12,7 @@
 
 #include "../include/push_swap.h"
 
-void	swap(t_inode **head)
+void	swap(t_inode **head, int flag)
 {
 	t_inode	*first;
 	t_inode	*second;
@@ -36,14 +36,18 @@ void	swap(t_inode **head)
 	second->next = first;
 	*head = second;
 	last->next = *head;
+	if (flag == 0)
+		ft_printf("sa\n");
 }
 
-void	rot(t_inode **head)
+void	rot(t_inode **head, int flag)
 {
 	*head = (*head)->next;
+	if (flag == 0)
+		ft_printf("ra\n");
 }
 
-void	rrot(t_inode **head)
+void	rrot(t_inode **head, int flag)
 {
 	t_inode	*og_head;
 
@@ -53,6 +57,8 @@ void	rrot(t_inode **head)
 	while (og_head->next != *head)
 		og_head = og_head->next;
 	*head = og_head;
+	if (flag == 0)
+		ft_printf("rra\n");
 }
 
 void	push(t_inode **from, t_inode **to)

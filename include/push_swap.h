@@ -50,9 +50,9 @@ void	destroy_list(t_inode **head);
 void	print_list(t_inode **head);
 
 //stack motions
-void	swap(t_inode **head);
-void	rot(t_inode **head);
-void	rrot(t_inode **head);
+void	swap(t_inode **head, int flag);
+void	rot(t_inode **head, int flag);
+void	rrot(t_inode **head, int flag);
 void	push(t_inode **from, t_inode **to);
 
 //sorting

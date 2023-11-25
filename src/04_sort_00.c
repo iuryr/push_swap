@@ -46,30 +46,30 @@ void	sort_two(t_stack *stack)
 {
 	if (is_ordered(stack->head))
 		return;
-	swap(stack->head);
+	swap(stack->head, 0);
 }
 
 void	sort_three(t_stack *stack)
 {
 	if ((*stack->head)->number == stack->min)
 	{
-		swap(stack->head);
-		rot(stack->head);
+		swap(stack->head, 0);
+		rot(stack->head, 0);
 		update_meta(stack);
 	}
 	else if ((*stack->head)->number == stack->max)
 	{
-		rot(stack->head);
+		rot(stack->head, 0);
 		if (!is_ordered(stack->head))
-			swap(stack->head);
+			swap(stack->head, 0);
 		update_meta(stack);
 	}
 	else
 	{
 		if (get_index(stack->head, stack->max) == 1)
-			rrot(stack->head);
+			rrot(stack->head, 0);
 		else
-			swap(stack->head);
+			swap(stack->head, 0);
 		update_meta(stack);
 	}
 }
