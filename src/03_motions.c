@@ -229,3 +229,29 @@ int	min_cost_ab(t_stack *stack_a, t_stack *stack_b)
 		i = rrarb_number(stack_a, stack_b, tmp->number);
 	return (i);
 }
+
+void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	t_inode *tmp;
+
+	while (stack_a->size > 3 && !is_ordered(stack_a->head))
+	{
+		tmp = *stack_a->head;
+		i = min_cost_ab(stack_a, stack_b);
+		while (i >= 0)
+		{
+			if (i == sim_rot_number(stack_a, stack_b, tmp->number))
+				i = apply_rarb(stack_a, stack_b, tmp->number, 'a');
+			else if (i == sim_revrot_number(stack_a, stack_b, tmp->number))
+				i = apply_rrarrb(stack_a, stack_b, tmp->number, 'a');
+			else if (i == rarrb_number(stack_a, stack_b, tmp->number))
+				i = apply_rarrb(stack_a, stack_b, tmp->number, 'a');
+			else if (i == rrarb_number(stack_a, stack_b, tmp->number))
+				i = apply_rrarb(stack_a, stack_b, tmp->number, 'a');
+			else
+			 tmp = tmp->next;
+		}
+	}
+
+}
