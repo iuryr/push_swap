@@ -52,7 +52,9 @@ void	print_list(t_inode **head);
 //stack motions
 void	swap(t_inode **head, int flag);
 void	rot(t_inode **head, int flag);
+void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rrot(t_inode **head, int flag);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	push(t_inode **from, t_inode **to);
 
 //sorting
