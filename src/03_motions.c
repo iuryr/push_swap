@@ -178,3 +178,26 @@ int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	return (-1);
 }
 
+int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
+{
+	if (s == 'a')
+	{
+		while ((*stack_a->head)->number != nbr)
+			rrot(stack_a->head, 0);
+		while (get_insert_index(stack_b, nbr) > 0)
+			rot(stack_b->head, 1);
+		push(stack_a->head, stack_b->head);
+		ft_printf("pb\n");
+	}
+	else
+	{
+		while (get_insert_index(stack_a, nbr) > 0)
+			rrot(stack_a->head, 0);
+		while ((*stack_b->head)->number != nbr)
+			rot(stack_b->head, 1);
+		push(stack_b->head, stack_a->head);
+		ft_printf("pa\n");
+	}
+	return (-1);
+
+}
