@@ -12,12 +12,12 @@
 
 #include "../include/push_swap.h"
 
-int	is_ordered(t_inode **head)
+int	is_ordered(t_stack *s)
 {
 	t_inode	*og_head;
 
-	og_head = *head;
-	while (og_head->next != *head)
+	og_head = *s->head;
+	while (og_head->next != *s->head)
 	{
 		if (og_head->next->number < og_head->number)
 			return (0);
@@ -43,10 +43,9 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	proper_push_b(stack_a, stack_b);
 }
 
-//preciso pensar melhor onde colocar as chamadas para o ft_printf
 void	sort_two(t_stack *stack)
 {
-	if (is_ordered(stack->head))
+	if (is_ordered(stack))
 		return;
 	swap(stack, 0);
 }
@@ -62,7 +61,7 @@ void	sort_three(t_stack *stack)
 	else if ((*stack->head)->number == stack->max)
 	{
 		rot(stack, 0);
-		if (!is_ordered(stack->head))
+		if (!is_ordered(stack))
 			swap(stack, 0);
 	}
 	else

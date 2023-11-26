@@ -62,7 +62,7 @@ int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 
 //sorting
-int		is_ordered(t_inode **head);
+int	is_ordered(t_stack *s);
 unsigned int	get_index(t_inode **head, int nbr);
 int	get_insert_index(t_stack *stack, int nbr);
 void	sort(t_stack *stack_a, t_stack *stack_b);

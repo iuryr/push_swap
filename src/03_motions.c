@@ -238,7 +238,7 @@ void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
 	int i;
 	t_inode *tmp;
 
-	while (stack_a->size > 3 && !is_ordered(stack_a->head))
+	while (stack_a->size > 3 && !is_ordered(stack_a))
 	{
 		tmp = *stack_a->head;
 		i = min_cost_ab(stack_a, stack_b);
