@@ -38,12 +38,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		sort_three(stack_a);
 		return;
 	}
-	push(stack_a->head, stack_b->head);
-	push(stack_a->head, stack_b->head);
-	ft_printf("pb\n");
-	ft_printf("pb\n");
-	update_meta(stack_a);
-	update_meta(stack_b);
+	push(stack_a, stack_b, 0);
+	push(stack_a, stack_b, 0);
 	proper_push_b(stack_a, stack_b);
 }
 
@@ -52,31 +48,29 @@ void	sort_two(t_stack *stack)
 {
 	if (is_ordered(stack->head))
 		return;
-	swap(stack->head, 0);
+	swap(stack, 0);
 }
 
 void	sort_three(t_stack *stack)
 {
 	if ((*stack->head)->number == stack->min)
 	{
-		swap(stack->head, 0);
-		rot(stack->head, 0);
+		swap(stack, 0);
+		rot(stack, 0);
 		update_meta(stack);
 	}
 	else if ((*stack->head)->number == stack->max)
 	{
-		rot(stack->head, 0);
+		rot(stack, 0);
 		if (!is_ordered(stack->head))
-			swap(stack->head, 0);
-		update_meta(stack);
+			swap(stack, 0);
 	}
 	else
 	{
 		if (get_index(stack->head, stack->max) == 1)
-			rrot(stack->head, 0);
+			rrot(stack, 0);
 		else
-			swap(stack->head, 0);
-		update_meta(stack);
+			swap(stack, 0);
 	}
 }
 
