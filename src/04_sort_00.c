@@ -41,6 +41,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	push(stack_a, stack_b, 0);
 	push(stack_a, stack_b, 0);
 	proper_push_b(stack_a, stack_b);
+	sort_three(stack_a);
+	//proper_push_a
 }
 
 void	sort_two(t_stack *stack)
@@ -52,6 +54,8 @@ void	sort_two(t_stack *stack)
 
 void	sort_three(t_stack *stack)
 {
+	if (is_ordered(stack))
+		return ;
 	if ((*stack->head)->number == stack->min)
 	{
 		swap(stack, 0);
