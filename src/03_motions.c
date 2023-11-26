@@ -82,7 +82,7 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("rrr\n");
 }
 
-void	push(t_stack *from, t_stack *to)
+void	push(t_stack *from, t_stack *to, int c)
 {
 	t_inode	*last;
 	t_inode	*old_first;
@@ -104,6 +104,10 @@ void	push(t_stack *from, t_stack *to)
 	prepend_node(to->head, old_first);
 	update_meta(from);
 	update_meta(to);
+	if (c == 0)
+		ft_printf("pb\n");
+	else
+		ft_printf("pa\n");
 }
 
 int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
@@ -113,24 +117,20 @@ int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 		while((*stack_a->head)->number != nbr && get_insert_index(stack_b, nbr) > 0)
 			rr(stack_a, stack_b);
 		while((*stack_a->head)->number != nbr)
-			rot(stack_a->head, 0);
+			rot(stack_a, 0);
 		while(get_insert_index(stack_b, nbr) > 0)
-			rot(stack_b->head, 1);
-		push(stack_a->head, stack_b->head);
-		ft_printf("pb\n");
-		update_meta(stack_a);
-		update_meta(stack_b);
+			rot(stack_b, 1);
+		push(stack_a, stack_b, 0);
 	}
 	else
 	{
 		while((*stack_b->head)->number != nbr && get_insert_index(stack_a, nbr) > 0)
 			rr(stack_a, stack_b);
 		while((*stack_b->head)->number != nbr)
-			rot(stack_b->head, 1);
+			rot(stack_b, 1);
 		while (get_insert_index(stack_a, nbr))
-			rot(stack_a->head, 0);
-		push(stack_b->head, stack_a->head);
-		ft_printf("pa\n");
+			rot(stack_a, 0);
+		push(stack_b, stack_a, 1);
 	}
 	return (-1);
 }
@@ -142,10 +142,10 @@ int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 		while((*stack_a->head)->number != nbr && get_insert_index(stack_b, nbr))
 			rrr(stack_a, stack_b);
 		while((*stack_a->head)->number != nbr)
-			rrot(stack_a->head, 0);
+			rrot(stack_a, 0);
 		while(get_insert_index(stack_b, nbr) > 0)
-			rrot(stack_b->head, 1);
-		push(stack_a->head, stack_b->head);
+			rrot(stack_b, 1);
+		push(stack_a, stack_b, 0);
 		ft_printf("pb\n");
 	}
 	else
@@ -153,11 +153,10 @@ int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 		while((*stack_b->head)->number != nbr && get_insert_index(stack_a, nbr) > 0)
 			rrr(stack_a, stack_b);
 		while((*stack_b->head)->number != nbr)
-			rrot(stack_b->head, 1);
+			rrot(stack_b, 1);
 		while (get_insert_index(stack_a, nbr))
-			rrot(stack_a->head, 0);
-		push(stack_b->head, stack_a->head);
-		ft_printf("pa\n");
+			rrot(stack_a, 0);
+		push(stack_b, stack_a, 1);
 	}
 	return (-1);
 }
@@ -167,20 +166,18 @@ int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	if (s == 'a')
 	{
 		while ((*stack_a->head)->number != nbr)
-			rot(stack_a->head, 0);
+			rot(stack_a, 0);
 		while(get_insert_index(stack_b, nbr) > 0)
-			rrot(stack_b->head, 1);
-		push(stack_a->head, stack_b->head);
-		ft_printf("pb\n");
+			rrot(stack_b, 1);
+		push(stack_a, stack_b, 0);
 	}
 	else
 	{
 		while ((*stack_b->head)->number != nbr)
-			rot(stack_b->head, 1);
+			rot(stack_b, 1);
 		while (get_insert_index(stack_a, nbr) > 0)
-			rrot(stack_a->head, 0);
-		push(stack_b->head, stack_a->head);
-		ft_printf("pa\n");
+			rrot(stack_a, 0);
+		push(stack_b, stack_a, 1);
 	}
 	return (-1);
 }
@@ -190,20 +187,18 @@ int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	if (s == 'a')
 	{
 		while ((*stack_a->head)->number != nbr)
-			rrot(stack_a->head, 0);
+			rrot(stack_a, 0);
 		while (get_insert_index(stack_b, nbr) > 0)
-			rot(stack_b->head, 1);
-		push(stack_a->head, stack_b->head);
-		ft_printf("pb\n");
+			rot(stack_b, 1);
+		push(stack_a, stack_b, 0);
 	}
 	else
 	{
 		while (get_insert_index(stack_a, nbr) > 0)
-			rrot(stack_a->head, 0);
+			rrot(stack_a, 0);
 		while ((*stack_b->head)->number != nbr)
-			rot(stack_b->head, 1);
-		push(stack_b->head, stack_a->head);
-		ft_printf("pa\n");
+			rot(stack_b, 1);
+		push(stack_b, stack_a, 1);
 	}
 	return (-1);
 }
@@ -260,7 +255,5 @@ void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
 			else
 			 tmp = tmp->next;
 		}
-		update_meta(stack_a);
-		update_meta(stack_b);
 	}
 }

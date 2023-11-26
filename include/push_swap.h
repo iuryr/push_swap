@@ -55,7 +55,7 @@ void	rot(t_stack *s, int flag);
 void	rr(t_stack *stack_a, t_stack *stack_b);
 void	rrot(t_stack *s, int flag);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
-void	push(t_stack *from, t_stack *to);
+void	push(t_stack *from, t_stack *to, int c);
 int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
