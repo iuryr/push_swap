@@ -69,9 +69,15 @@ void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
 int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	sim_rot_number_a(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	sim_revrot_number_a(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rarrb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	rarrb_number_a(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rrarb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
+int	rrarb_number_a(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	min_cost_ab(t_stack *stack_a, t_stack *stack_b);
+int	min_cost_ba(t_stack *stack_a, t_stack *stack_b);
 void	proper_push_b(t_stack *stack_a, t_stack *stack_b);
+void	proper_push_a(t_stack *stack_a, t_stack *stack_b);
 #endif //PUSH_SWAP_H

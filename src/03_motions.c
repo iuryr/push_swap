@@ -146,7 +146,6 @@ int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 		while(get_insert_index(stack_b, nbr) > 0)
 			rrot(stack_b, 1);
 		push(stack_a, stack_b, 0);
-		ft_printf("pb\n");
 	}
 	else
 	{
@@ -233,6 +232,36 @@ int	min_cost_ab(t_stack *stack_a, t_stack *stack_b)
 	return (i);
 }
 
+int	min_cost_ba(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	t_inode	*tmp;
+
+	i = sim_revrot_number_a(stack_a, stack_b, (*stack_b->head)->number);
+	tmp = *stack_b->head;
+	while (tmp->next != *stack_b->head)
+	{
+		if (i > sim_rot_number_a(stack_a, stack_b, tmp->number))
+			i = sim_rot_number_a(stack_a, stack_b, tmp->number);
+		if (i > sim_revrot_number_a(stack_a, stack_b, tmp->number))
+			i = sim_revrot_number_a(stack_a, stack_b, tmp->number);
+		if (i > rarrb_number_a(stack_a, stack_b, tmp->number))
+			i = rarrb_number_a(stack_a, stack_b, tmp->number);
+		if (i > rrarb_number_a(stack_a, stack_b, tmp->number))
+			i = rrarb_number_a(stack_a, stack_b, tmp->number);
+		tmp = tmp->next;
+	}
+	if (i > sim_rot_number_a(stack_a, stack_b, tmp->number))
+		i = sim_rot_number_a(stack_a, stack_b, tmp->number);
+	if (i > sim_revrot_number_a(stack_a, stack_b, tmp->number))
+		i = sim_revrot_number_a(stack_a, stack_b, tmp->number);
+	if (i > rarrb_number_a(stack_a, stack_b, tmp->number))
+		i = rarrb_number_a(stack_a, stack_b, tmp->number);
+	if (i > rrarb_number_a(stack_a, stack_b, tmp->number))
+		i = rrarb_number_a(stack_a, stack_b, tmp->number);
+	return (i);
+}
+
 void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
 {
 	int i;
@@ -252,6 +281,31 @@ void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
 				i = apply_rarrb(stack_a, stack_b, tmp->number, 'a');
 			else if (i == rrarb_number(stack_a, stack_b, tmp->number))
 				i = apply_rrarb(stack_a, stack_b, tmp->number, 'a');
+			else
+			 tmp = tmp->next;
+		}
+	}
+}
+
+void	proper_push_a(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	t_inode *tmp;
+
+	while (stack_b->head)
+	{
+		tmp = *stack_b->head;
+		i = min_cost_ba(stack_a, stack_b);
+		while (i >= 0)
+		{
+			if (i == sim_rot_number_a(stack_a, stack_b, tmp->number))
+				i = apply_rarb(stack_a, stack_b, tmp->number, 'b');
+			else if (i == sim_revrot_number_a(stack_a, stack_b, tmp->number))
+				i = apply_rrarrb(stack_a, stack_b, tmp->number, 'b');
+			else if (i == rarrb_number_a(stack_a, stack_b, tmp->number))
+				i = apply_rarrb(stack_a, stack_b, tmp->number, 'b');
+			else if (i == rrarb_number_a(stack_a, stack_b, tmp->number))
+				i = apply_rrarb(stack_a, stack_b, tmp->number, 'b');
 			else
 			 tmp = tmp->next;
 		}

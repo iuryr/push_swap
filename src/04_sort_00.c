@@ -28,6 +28,8 @@ int	is_ordered(t_stack *s)
 
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
+	int	i;
+
 	if (stack_a->size == 2)
 	{
 		sort_two(stack_a);
@@ -38,11 +40,16 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		sort_three(stack_a);
 		return;
 	}
-	push(stack_a, stack_b, 0);
-	push(stack_a, stack_b, 0);
+	i = 0;
+	while (stack_a->size > 3 && !is_ordered(stack_a) && i < 2)
+	{
+		push(stack_a, stack_b, 0);
+		i++;
+	}
 	proper_push_b(stack_a, stack_b);
-	sort_three(stack_a);
-	//proper_push_a
+	if (stack_a->size == 3 && !is_ordered(stack_a))
+		sort_three(stack_a);
+	proper_push_a(stack_a, stack_b);
 }
 
 void	sort_two(t_stack *stack)
