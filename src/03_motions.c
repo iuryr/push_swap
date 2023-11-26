@@ -218,6 +218,7 @@ int	min_cost_ab(t_stack *stack_a, t_stack *stack_b)
 			i = rarrb_number(stack_a, stack_b, tmp->number);
 		if (i > rrarb_number(stack_a, stack_b, tmp->number))
 			i = rrarb_number(stack_a, stack_b, tmp->number);
+		tmp = tmp->next;
 	}
 	if (i > sim_rot_number(stack_a, stack_b, tmp->number))
 		i = sim_rot_number(stack_a, stack_b, tmp->number);
@@ -252,6 +253,7 @@ void	proper_push_b(t_stack *stack_a, t_stack *stack_b)
 			else
 			 tmp = tmp->next;
 		}
+		update_meta(stack_a);
+		update_meta(stack_b);
 	}
-
 }

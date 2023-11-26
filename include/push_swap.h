@@ -26,7 +26,7 @@ typedef struct s_inode
 typedef struct s_stack
 {
 	t_inode		**head;
-	t_inode		**tail;
+	t_inode		*tail;
 	int			min;
 	int			max;
 	size_t		size;
@@ -42,7 +42,7 @@ void	process_input(int argc, char *argv[], t_stack *stack);
 
 //list manipulation
 unsigned int	lstsize(t_inode **head);
-t_inode	**get_tail(t_inode **head);
+t_inode	*get_tail(t_inode **head);
 t_inode	*create_node(int number);
 void	append_node(t_inode **head, t_inode *new_node);
 void	prepend_node(t_inode **head, t_inode *new_node);
@@ -73,4 +73,5 @@ int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rarrb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	rrarb_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	min_cost_ab(t_stack *stack_a, t_stack *stack_b);
+void	proper_push_b(t_stack *stack_a, t_stack *stack_b);
 #endif //PUSH_SWAP_H

@@ -38,7 +38,13 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		sort_three(stack_a);
 		return;
 	}
-	stack_b->size = 0;
+	push(stack_a->head, stack_b->head);
+	push(stack_a->head, stack_b->head);
+	ft_printf("pb\n");
+	ft_printf("pb\n");
+	update_meta(stack_a);
+	update_meta(stack_b);
+	proper_push_b(stack_a, stack_b);
 }
 
 //preciso pensar melhor onde colocar as chamadas para o ft_printf
@@ -78,11 +84,13 @@ void	sort_three(t_stack *stack)
 unsigned int	get_index(t_inode **head, int nbr)
 {
 	unsigned int	index;
+	t_inode		*tmp;
 	index = 0;
-	while ((*head)->number != nbr)
+	tmp = *head;
+	while (tmp->number != nbr)
 	{
 		index++;
-		(*head) = (*head)->next;
+		tmp = tmp->next;
 	}
 	(*head)->index = 0; //n sei pq
 	return (index);
