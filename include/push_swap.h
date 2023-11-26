@@ -50,12 +50,12 @@ void	destroy_list(t_inode **head);
 void	print_list(t_inode **head);
 
 //stack motions
-void	swap(t_inode **head, int flag);
-void	rot(t_inode **head, int flag);
+void	swap(t_stack *s, int flag);
+void	rot(t_stack *s, int flag);
 void	rr(t_stack *stack_a, t_stack *stack_b);
-void	rrot(t_inode **head, int flag);
+void	rrot(t_stack *s, int flag);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
-void	push(t_inode **from, t_inode **to);
+void	push(t_stack *from, t_stack *to);
 int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);

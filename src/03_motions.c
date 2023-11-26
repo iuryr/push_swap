@@ -12,93 +12,98 @@
 
 #include "../include/push_swap.h"
 
-void	swap(t_inode **head, int flag)
+void	swap(t_stack *s, int flag)
 {
 	t_inode	*first;
 	t_inode	*second;
 	t_inode	*last;
 
-	if (*head == NULL || (*head)->next == *head)
+	if (*s->head == NULL || (*s->head)->next == *s->head)
 		return ;
-	first = *head;
+	first = *s->head;
 	second = first->next;
-	last = *head;
-	while (last->next != *head)
+	last = *s->head;
+	while (last->next != *s->head)
 		last = last->next;
 	if (last->next->next == last)
 	{
 		first->next = second;
 		second->next = first;
-		*head = second;
+		*s->head = second;
 		return ;
 	}
 	first->next = second->next;
 	second->next = first;
-	*head = second;
-	last->next = *head;
+	*s->head = second;
+	last->next = *s->head;
 	if (flag == 0)
 		ft_printf("sa\n");
+	update_meta(s);
 }
 
-void	rot(t_inode **head, int flag)
+void	rot(t_stack *s, int flag)
 {
-	*head = (*head)->next;
+	*s->head = (*s->head)->next;
 	if (flag == 0)
 		ft_printf("ra\n");
 	if (flag == 1)
 		ft_printf("rb\n");
+	update_meta(s);
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	rot(stack_a->head, 2);
-	rot(stack_b->head, 2);
+	rot(stack_a, 2);
+	rot(stack_b, 2);
 	ft_printf("rr\n");
 }
 
-void	rrot(t_inode **head, int flag)
+void	rrot(t_stack *s, int flag)
 {
 	t_inode	*og_head;
 
-	og_head = *head;
-	if ((*head)->next == *head)
+	og_head = *s->head;
+	if ((*s->head)->next == *s->head)
 		return ;
-	while (og_head->next != *head)
+	while (og_head->next != *s->head)
 		og_head = og_head->next;
-	*head = og_head;
+	*s->head = og_head;
 	if (flag == 0)
 		ft_printf("rra\n");
 	if (flag == 1)
 		ft_printf("rrb\n");
+	update_meta(s);
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	rrot(stack_a->head, 2);
-	rrot(stack_b->head, 2);
+	rrot(stack_a, 2);
+	rrot(stack_b, 2);
 	ft_printf("rrr\n");
 }
 
-void	push(t_inode **from, t_inode **to)
+void	push(t_stack *from, t_stack *to)
 {
 	t_inode	*last;
 	t_inode	*old_first;
 
-	if (*from == NULL)
+	if (*from->head == NULL)
 		return ;
-	old_first = *from;
-	last = *from;
+	old_first = *from->head;
+	last = *from->head;
 	if (old_first->next == old_first)
 	{
-		prepend_node(to, old_first);
-		*from = NULL;
+		prepend_node(to->head, old_first);
+		*from->head = NULL;
 		return ;
 	}
-	while (last->next != *from)
+	while (last->next != *from->head)
 		last = last->next;
-	last->next = (*from)->next;
-	*from = (*from)->next;
-	prepend_node(to, old_first);
+	last->next = (*from->head)->next;
+	*from->head = (*from->head)->next;
+	prepend_node(to->head, old_first);
+	update_meta(from);
+	update_meta(to);
 }
 
 int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
@@ -113,6 +118,8 @@ int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 			rot(stack_b->head, 1);
 		push(stack_a->head, stack_b->head);
 		ft_printf("pb\n");
+		update_meta(stack_a);
+		update_meta(stack_b);
 	}
 	else
 	{
