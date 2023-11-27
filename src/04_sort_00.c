@@ -58,6 +58,7 @@ void	sort_two(t_stack *stack)
 	if (is_ordered(stack))
 		return;
 	swap(stack, 0);
+	ft_printf("sa\n");
 }
 
 void	sort_three(t_stack *stack)

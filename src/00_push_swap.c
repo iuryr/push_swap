@@ -25,6 +25,7 @@ int	main(int argc, char *argv[])
 	if (is_ordered(&stack_a))
 	{
 		destroy_list(stack_a.head);
+		free(stack_b.head);
 		exit(0);
 	}
 	sort(&stack_a, &stack_b);
