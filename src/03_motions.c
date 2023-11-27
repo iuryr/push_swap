@@ -95,6 +95,8 @@ void	push(t_stack *from, t_stack *to, int c)
 	{
 		prepend_node(to->head, old_first);
 		*from->head = NULL;
+		update_meta(to);
+		ft_printf("pa\n");
 		return ;
 	}
 	while (last->next != *from->head)
@@ -124,11 +126,11 @@ int	apply_rarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	}
 	else
 	{
-		while((*stack_b->head)->number != nbr && get_insert_index(stack_a, nbr) > 0)
+		while((*stack_b->head)->number != nbr && get_insert_index_a(stack_a, nbr) > 0)
 			rr(stack_a, stack_b);
 		while((*stack_b->head)->number != nbr)
 			rot(stack_b, 1);
-		while (get_insert_index(stack_a, nbr))
+		while (get_insert_index_a(stack_a, nbr))
 			rot(stack_a, 0);
 		push(stack_b, stack_a, 1);
 	}
@@ -149,11 +151,11 @@ int	apply_rrarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	}
 	else
 	{
-		while((*stack_b->head)->number != nbr && get_insert_index(stack_a, nbr) > 0)
+		while((*stack_b->head)->number != nbr && get_insert_index_a(stack_a, nbr) > 0)
 			rrr(stack_a, stack_b);
 		while((*stack_b->head)->number != nbr)
 			rrot(stack_b, 1);
-		while (get_insert_index(stack_a, nbr))
+		while (get_insert_index_a(stack_a, nbr))
 			rrot(stack_a, 0);
 		push(stack_b, stack_a, 1);
 	}
@@ -174,7 +176,7 @@ int	apply_rarrb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	{
 		while ((*stack_b->head)->number != nbr)
 			rot(stack_b, 1);
-		while (get_insert_index(stack_a, nbr) > 0)
+		while (get_insert_index_a(stack_a, nbr) > 0)
 			rrot(stack_a, 0);
 		push(stack_b, stack_a, 1);
 	}
@@ -193,7 +195,7 @@ int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s)
 	}
 	else
 	{
-		while (get_insert_index(stack_a, nbr) > 0)
+		while (get_insert_index_a(stack_a, nbr) > 0)
 			rrot(stack_a, 0);
 		while ((*stack_b->head)->number != nbr)
 			rot(stack_b, 1);
@@ -237,8 +239,8 @@ int	min_cost_ba(t_stack *stack_a, t_stack *stack_b)
 	int i;
 	t_inode	*tmp;
 
-	i = sim_revrot_number_a(stack_a, stack_b, (*stack_b->head)->number);
 	tmp = *stack_b->head;
+	i = sim_revrot_number_a(stack_a, stack_b, (*stack_b->head)->number);
 	while (tmp->next != *stack_b->head)
 	{
 		if (i > sim_rot_number_a(stack_a, stack_b, tmp->number))
@@ -292,7 +294,7 @@ void	proper_push_a(t_stack *stack_a, t_stack *stack_b)
 	int i;
 	t_inode *tmp;
 
-	while (stack_b->head)
+	while (*stack_b->head)
 	{
 		tmp = *stack_b->head;
 		i = min_cost_ba(stack_a, stack_b);

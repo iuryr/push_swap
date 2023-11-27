@@ -28,7 +28,8 @@ int	main(int argc, char *argv[])
 		exit(0);
 	}
 	sort(&stack_a, &stack_b);
-	// destroy_list(stack_a.head);
-	// free(stack_a.head);
-	// free(stack_b.head);
+	destroy_list(stack_a.head);
+	free(stack_a.head);
+	free(stack_b.head);
+	return (0);
 }

@@ -82,9 +82,9 @@ int	rarrb_number_a(t_stack *stack_a, t_stack *stack_b, int nbr)
 	unsigned int i;
 
 	i = 0;
-	if (get_insert_index(stack_a, nbr))
-		i = stack_a->size - get_insert_index(stack_a, nbr);
-	i = i + get_index(stack_b->head, nbr);
+	if (get_index(stack_b->head, nbr))
+		i = stack_b->size - get_insert_index(stack_b, nbr);
+	i = i + get_insert_index(stack_a, nbr);
 	return (i);
 }
 
@@ -105,8 +105,25 @@ int	rrarb_number_a(t_stack *stack_a, t_stack *stack_b, int nbr)
 	unsigned int i;
 
 	i = 0;
-	if (get_index(stack_b->head, nbr))
-		i = stack_b->size - get_index(stack_b->head, nbr);
-	i = i + get_insert_index(stack_a, nbr);
+	if (get_insert_index(stack_a, nbr))
+		i = stack_a->size - get_insert_index(stack_a, nbr);
+	i = i + get_index(stack_b->head, nbr);
 	return (i);
+}
+
+void	final_ordering(t_stack *s)
+{
+	unsigned int	i;
+	
+	i = get_index(s->head, s->min);
+	if (i < s->size - i)
+	{
+		while ((*s->head)->number != s->min)
+			rot(s, 0);
+	}
+	else
+	{
+		while ((*s->head)->number != s->min)
+			rrot(s, 0);
+	}
 }

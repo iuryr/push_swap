@@ -50,6 +50,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	if (stack_a->size == 3 && !is_ordered(stack_a))
 		sort_three(stack_a);
 	proper_push_a(stack_a, stack_b);
+	final_ordering(stack_a);
 }
 
 void	sort_two(t_stack *stack)
@@ -98,4 +99,23 @@ unsigned int	get_index(t_inode **head, int nbr)
 	}
 	(*head)->index = 0; //n sei pq
 	return (index);
+}
+
+int	get_insert_index_a(t_stack *a, int nbr)
+{
+	int	i;
+	t_inode *tmp;
+
+	i = 1;
+	if (nbr < (*a->head)->number && nbr > a->tail->number)
+		return (0);
+	if (nbr > a->max || nbr < a->min)
+		return (get_index(a->head, a->min));
+	tmp = (*a->head);
+	while (tmp->number > nbr || tmp->next->number < nbr)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
 }

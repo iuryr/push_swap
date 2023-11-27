@@ -65,6 +65,7 @@ int	apply_rrarb(t_stack *stack_a, t_stack *stack_b, int nbr, char s);
 int	is_ordered(t_stack *s);
 unsigned int	get_index(t_inode **head, int nbr);
 int	get_insert_index(t_stack *stack, int nbr);
+int	get_insert_index_a(t_stack *a, int nbr);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
@@ -80,4 +81,5 @@ int	min_cost_ab(t_stack *stack_a, t_stack *stack_b);
 int	min_cost_ba(t_stack *stack_a, t_stack *stack_b);
 void	proper_push_b(t_stack *stack_a, t_stack *stack_b);
 void	proper_push_a(t_stack *stack_a, t_stack *stack_b);
+void	final_ordering(t_stack *s);
 #endif //PUSH_SWAP_H
