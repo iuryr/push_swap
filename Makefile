@@ -8,9 +8,14 @@ SRC = ./src/00_push_swap.c \
 	  ./src/01_input_processing_00.c \
 	  ./src/01_input_processing_01.c \
 	  ./src/02_llist_manipulation.c \
-	  ./src/03_motions.c \
+	  ./src/03_motions_00.c \
+	  ./src/03_motions_01.c \
+	  ./src/03_motions_02.c \
+	  ./src/03_motions_03.c \
 	  ./src/04_sort_00.c \
-	  ./src/04_sort_01.c
+	  ./src/04_sort_01.c \
+	  ./src/04_sort_02.c \
+	  ./src/04_sort_03.c
 
 LIBFT_DIR = ./libft
 LIBFT = ./libft/libft.a

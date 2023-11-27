@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:56:35 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/27 09:46:56 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:53:05 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,11 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	if (stack_a->size == 2)
 	{
 		sort_two(stack_a);
-		return;
+		return ;
 	}
 	if (stack_a->size == 3)
 	{
 		sort_three(stack_a);
-		return;
-	}
-	if (stack_a->size == 5)
-	{
-		sort_five(stack_a, stack_b);
 		return ;
 	}
 	i = 0;
@@ -61,7 +56,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 void	sort_two(t_stack *stack)
 {
 	if (is_ordered(stack))
-		return;
+		return ;
 	swap(stack, 0);
 	ft_printf("sa\n");
 }
@@ -103,46 +98,11 @@ void	sort_five(t_stack *a, t_stack *b)
 	sort_three(a);
 	while (*b->head)
 	{
-		if ((*b->head)->number == b->max)
+		if ((*b->head)->number > (*b->head)->next->number)
 		{
 			push(b, a, 1);
 			rot(a, 0);
 		}
 		push(b, a, 1);
 	}
-}
-
-//return the index of a number in a linked-list
-unsigned int	get_index(t_inode **head, int nbr)
-{
-	unsigned int	index;
-	t_inode		*tmp;
-	index = 0;
-	tmp = *head;
-	while (tmp->number != nbr)
-	{
-		index++;
-		tmp = tmp->next;
-	}
-	(*head)->index = 0; //n sei pq
-	return (index);
-}
-
-int	get_insert_index_a(t_stack *a, int nbr)
-{
-	int	i;
-	t_inode *tmp;
-
-	i = 1;
-	if (nbr < (*a->head)->number && nbr > a->tail->number)
-		return (0);
-	if (nbr > a->max || nbr < a->min)
-		return (get_index(a->head, a->min));
-	tmp = (*a->head);
-	while (tmp->number > nbr || tmp->next->number < nbr)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
 }
