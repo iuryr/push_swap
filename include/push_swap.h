@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:55:52 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/24 15:02:49 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:45:31 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	get_insert_index_a(t_stack *a, int nbr);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	sort_two(t_stack *stack_a);
 void	sort_three(t_stack *stack_a);
+void	sort_five(t_stack *a, t_stack *b);
 int	sim_rot_number(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	sim_rot_number_a(t_stack *stack_a, t_stack *stack_b, int nbr);
 int	sim_revrot_number(t_stack *stack_a, t_stack *stack_b, int nbr);

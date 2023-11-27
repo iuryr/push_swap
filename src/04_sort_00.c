@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:56:35 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/24 15:03:06 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:46:56 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	{
 		sort_three(stack_a);
 		return;
+	}
+	if (stack_a->size == 5)
+	{
+		sort_five(stack_a, stack_b);
+		return ;
 	}
 	i = 0;
 	while (stack_a->size > 3 && !is_ordered(stack_a) && i < 2)
@@ -83,6 +88,27 @@ void	sort_three(t_stack *stack)
 			rrot(stack, 0);
 		else
 			swap(stack, 0);
+	}
+}
+
+void	sort_five(t_stack *a, t_stack *b)
+{
+	while (a->size > 3)
+	{
+		if ((*a->head)->number == a->min || (*a->head)->number == a->max)
+			push(a, b, 0);
+		else
+			rot(a, 0);
+	}
+	sort_three(a);
+	while (*b->head)
+	{
+		if ((*b->head)->number == b->max)
+		{
+			push(b, a, 1);
+			rot(a, 0);
+		}
+		push(b, a, 1);
 	}
 }
 
