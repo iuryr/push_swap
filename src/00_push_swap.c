@@ -6,7 +6,7 @@
 /*   By: iusantos <iusantos@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:27:41 by iusantos          #+#    #+#             */
-/*   Updated: 2023/11/21 16:10:13 by iusantos         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:05:52 by iusantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		exit(1);
 	stack_a.head = ft_calloc(1, sizeof(t_inode *));
-	stack_b.head = ft_calloc(1, sizeof(t_inode *));
 	process_input(argc, argv, &stack_a);
 	if (is_ordered(&stack_a))
 	{
@@ -28,6 +27,7 @@ int	main(int argc, char *argv[])
 		free(stack_b.head);
 		exit(0);
 	}
+	stack_b.head = ft_calloc(1, sizeof(t_inode *));
 	sort(&stack_a, &stack_b);
 	destroy_list(stack_a.head);
 	free(stack_a.head);
