@@ -1,8 +1,8 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -c
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -c -O3
+FLAGS = -Wall -Wextra -Werror -O3
 
 SRC = ./src/00_push_swap.c \
 	  ./src/01_input_processing_00.c \
